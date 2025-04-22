@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para ti 💌</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #fef3f3;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .envelope {
+      width: 220px;
+      height: 130px;
+      background: #d23f57;
+      margin: 0 auto;
+      position: relative;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: all 0.5s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .flap {
+      width: 0;
+      height: 0;
+      border-left: 110px solid transparent;
+      border-right: 110px solid transparent;
+      border-bottom: 65px solid #b22e47;
+      position: absolute;
+      top: -65px;
+      left: 0;
+      transition: transform 0.5s ease;
+    }
+    .message {
+      display: none;
+      margin-top: 30px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+    .envelope.open + .message {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    img {
+      width: 240px;
+      border-radius: 12px;
+      margin-top: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    audio {
+      margin-top: 20px;
+    }
+    .texto {
+      font-size: 16px;
+      max-width: 400px;
+      margin: 0 auto;
+      white-space: pre-line;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>💌 Toca el sobre para abrir tu mensaje</h2>
+  <div class="envelope" onclick="openEnvelope(this)">
+    <div class="flap"></div>
+  </div>
+  <div class="message">
+    <div class="texto">
+      Le pedí a Dios que me guiara por buen camino y me pusiera a una buena compañera de vida a mi lado, 
+      vaya que me escuchó porque te encontré a ti y eres lo que siempre soñé. 
+      No cabe duda que soy afortunado por tenerte conmigo.
+      Quiero que sepas que te quiero con todo el corazón, que hasta ya puedo decir que te amo. 
+      Ten por seguro que siempre cuidaré de ti y de lo nuestro.
+      <br><br>Att. Leopoldo ❤️
+    </div>
+    <img src="assets/nosotros.jpg" alt="Nosotros">
+    <audio id="bg-music" loop>
+      <source src="assets/mmxx.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio HTML5.
+    </audio>
+  </div>
+
+  <script>
+    function openEnvelope(el) {
+      el.classList.add('open');
+      const audio = document.getElementById('bg-music');
+      audio.play().catch(function(error) {
+        console.log('La reproducción automática fue bloqueada:', error);
+      });
+    }
+  </script>
+</body>
+</html>
